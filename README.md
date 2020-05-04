@@ -1,4 +1,6 @@
-# music-launcher-android
+# Music Launcher Android
+
+![Picture](app/src/main/res/mipmap-hdpi/ic_launcher.png)
 
 Project for re-purposing your old mobile phone in to a mp3 player via a launcher. No ROOT privileges required.
 
