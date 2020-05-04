@@ -4,7 +4,7 @@
 
 Project for re-purposing your old mobile phone in to a mp3 player via a launcher. No ROOT privileges required.
 
-[For Demo Visit here](https://youtu.be/ik7YlZy_g8U)
+[For Demo, visit here](https://youtu.be/ik7YlZy_g8U)
 
 ## Problem Statement
 
