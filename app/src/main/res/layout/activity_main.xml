@@ -12,7 +12,7 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/ic_launcher_foreground"
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/app_name"
             />

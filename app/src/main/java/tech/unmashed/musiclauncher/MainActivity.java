@@ -13,10 +13,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        this.launchIntent = getPackageManager().getLaunchIntentForPackage("com.google.android.apps.youtube.music"); // replace with your intended app
-//        this.launchIntent = getPackageManager().getLaunchIntentForPackage("com.apple.android.music");
+        this.launchIntent = getPackageManager().getLaunchIntentForPackage(getString(R.string.target_app));
         if (this.launchIntent != null) {
-            startActivity(this.launchIntent);//null pointer check in case package name was not found
+            startActivity(this.launchIntent);
         }
     }
 
@@ -25,12 +24,11 @@ public class MainActivity extends AppCompatActivity {
         super.onPostResume();
 
         if (this.launchIntent == null) {
-            this.launchIntent = getPackageManager().getLaunchIntentForPackage("com.google.android.apps.youtube.music");
-//            this.launchIntent = getPackageManager().getLaunchIntentForPackage("com.apple.android.music");// replace with your intended app
+            this.launchIntent = getPackageManager().getLaunchIntentForPackage(getString(R.string.target_app));
         }
 
         if (this.launchIntent != null) {
-            startActivity(this.launchIntent);//null pointer check in case package name was not found
+            startActivity(this.launchIntent);
         }
     }
 }
