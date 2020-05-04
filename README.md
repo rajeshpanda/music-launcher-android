@@ -24,6 +24,3 @@ Now I have a WiFi enabled MP3/MP4 player with headphone jack.
 - Change property target_app's value to your music app's package name. You can get the the package name from Google Play Store. It will be in URL.
 - Build and Run.
 - In your device set the default launcher to 'Music Launcher' and there you go. All set.
-
-
-Enjoy!!
