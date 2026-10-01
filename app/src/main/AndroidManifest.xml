@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="tech.unmashed.musiclauncher">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Android 11+ package visibility: without this, getLaunchIntentForPackage() returns null. -->
+    <queries>
+        <package android:name="com.jrtstudio.AnotherMusicPlayer" /> <!-- RocketPlayer -->
+        <package android:name="com.spotify.music" /> <!-- Spotify -->
+        <package android:name="com.google.android.apps.youtube.music" /><!-- Youtube Music -->
+        <package android:name="deezer.android.app"/> <!-- Deezer -->
+        <package android:name="com.amazon.mp3" /> <!-- Amazon Music -->
+        <package android:name="com.maxmpz.audioplayer"/> <!-- PowerAmp -->
+    </queries>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:theme="@style/AppTheme" android:stateNotNeeded="true">
+        <activity android:name=".MainActivity" android:theme="@style/AppTheme" android:stateNotNeeded="true" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />

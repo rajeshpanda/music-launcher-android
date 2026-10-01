@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Music Launcher</string>
-    <string name="target_app">com.google.android.apps.youtube.music</string>
+    <string name="Deezer">deezer.android.app</string>
+    <string name="AmazonMusic">com.amazon.mp3</string>
+    <string name="Spotify">com.spotify.music</string>
+    <string name="YT_Music">com.google.android.apps.youtube.music</string>
+    <string name="PowerAmp">com.maxmpz.audioplayer</string>
+    <string name="RocketPlayer">com.jrtstudio.AnotherMusicPlayer</string>
 </resources>
+

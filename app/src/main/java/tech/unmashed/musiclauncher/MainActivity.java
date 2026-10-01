@@ -1,34 +1,56 @@
 package tech.unmashed.musiclauncher;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Intent launchIntent;
+    private static final String TAG = "MusicLauncher";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        this.launchIntent = getPackageManager().getLaunchIntentForPackage(getString(R.string.target_app));
-        if (this.launchIntent != null) {
-            startActivity(this.launchIntent);
-        }
+        Log.d(TAG, "onCreate");
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+        launchTarget();
+    }
 
-        if (this.launchIntent == null) {
-            this.launchIntent = getPackageManager().getLaunchIntentForPackage(getString(R.string.target_app));
+    private void launchTarget() {
+        // Change this to the music player you want to be launched. See res/values/strings.xml. Add your own app if desired.
+        String target = getString(R.string.RocketPlayer);
+        PackageManager pm = getPackageManager();
+
+        try {
+            pm.getPackageInfo(target, 0);
+            Log.d(TAG, "Target package is visible: " + target);
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, "Target package NOT visible (not installed, or missing <queries> entry): " + target);
+            return;
         }
 
-        if (this.launchIntent != null) {
-            startActivity(this.launchIntent);
+        Intent launchIntent = pm.getLaunchIntentForPackage(target);
+        if (launchIntent == null) {
+            Log.e(TAG, "getLaunchIntentForPackage returned null for " + target
+                    + " (package has no MAIN/LAUNCHER activity?)");
+            return;
+        }
+
+        Log.d(TAG, "Launching " + launchIntent);
+        try {
+            startActivity(launchIntent);
+        } catch (ActivityNotFoundException | SecurityException e) {
+            Log.e(TAG, "startActivity failed for " + target, e);
         }
     }
 }
